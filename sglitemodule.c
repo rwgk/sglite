@@ -1,4 +1,4 @@
-/* $Id: sglitemodule.c 120 2000-09-02 05:25:41Z rwgk $ */
+/* $Id: sglitemodule.c 123 2000-09-03 22:04:32Z wdelano $ */
 
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
@@ -1262,13 +1262,12 @@ static struct PyMethodDef module_methods[] = {
 
 static char *module_documentation = "sglite - space group library";
 
-
 DL_EXPORT(void)
 initsglite(void)
 {
   PyObject  *m, *d, *s;
 
-  char *Revision = "$Revision: 120 $";
+  char *Revision = "$Revision: 123 $";
 
   m = Py_InitModule4("sglite", module_methods, module_documentation,
                      NULL, PYTHON_API_VERSION);
