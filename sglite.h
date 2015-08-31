@@ -1,4 +1,4 @@
-/* $Id: sglite.h 120 2000-09-02 05:25:41Z rwgk $ */
+/* $Id: sglite.h 319 2001-02-19 20:35:24Z rwgk $ */
 
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
@@ -184,8 +184,8 @@ int CB_SgOps(const T_SgOps *SgOps,
 
 typedef struct
   {
-    const int    Sym;
-    const int    nLTr;
+    int          Sym;
+    int          nLTr;
     const T_LTr  *LTr;
   }
   T_ConvCType;
