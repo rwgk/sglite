@@ -1,4 +1,4 @@
-/* $Id: sgconst.h 120 2000-09-02 05:25:41Z rwgk $ */
+/* $Id: sgconst.h 492 2001-06-04 23:48:02Z rwgk $ */
 
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
@@ -233,8 +233,8 @@ const char *XS_Name[] = {
 #define MGC_4_m       Make_MGC(XS_Tetragonal,    0,  0, 12)
 #define MGC_422       Make_MGC(XS_Tetragonal,    4,  0, 13)
 #define MGC_4mm       Make_MGC(XS_Tetragonal,    3,  0, 14)
-#define MGC_4bm2      Make_MGC(XS_Tetragonal,    2,  1, 15)
-#define MGC_4b2m      Make_MGC(XS_Tetragonal,    1,  0, 16)
+#define MGC_4b2m      Make_MGC(XS_Tetragonal,    2,  1, 15)
+#define MGC_4bm2      Make_MGC(XS_Tetragonal,    1,  0, 16)
 #define MGC_4_mmm     Make_MGC(XS_Tetragonal,    0,  0, 17)
 #define MGC_3         Make_MGC(XS_Trigonal,      1,  0, 18)
 #define MGC_3b        Make_MGC(XS_Trigonal,      0,  0, 19)
@@ -252,8 +252,8 @@ const char *XS_Name[] = {
 #define MGC_6_m       Make_MGC(XS_Hexagonal,     0,  0, 31)
 #define MGC_622       Make_MGC(XS_Hexagonal,     4,  0, 32)
 #define MGC_6mm       Make_MGC(XS_Hexagonal,     3,  0, 33)
-#define MGC_6bm2      Make_MGC(XS_Hexagonal,     2,  1, 34)
-#define MGC_6b2m      Make_MGC(XS_Hexagonal,     1,  0, 35)
+#define MGC_6b2m      Make_MGC(XS_Hexagonal,     2,  1, 34)
+#define MGC_6bm2      Make_MGC(XS_Hexagonal,     1,  0, 35)
 #define MGC_6_mmm     Make_MGC(XS_Hexagonal,     0,  0, 36)
 #define MGC_23        Make_MGC(XS_Cubic,         1,  0, 37)
 #define MGC_m3b       Make_MGC(XS_Cubic,         0,  0, 38)
