@@ -1,4 +1,4 @@
-/* $Id: sggen.c 120 2000-09-02 05:25:41Z rwgk $ */
+/* $Id: sggen.c 353 2001-03-11 07:53:12Z rwgk $ */
 
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
@@ -209,16 +209,17 @@ static int DoMulSMxLTr(T_SgOps *SgOps, int iLSMx, int iLLTr, int OldOnly)
   const T_RTMx  *LSMxi;
   const T_LTr   *LLTri;
   int           NewLTr[3];
+  const int     iLLTr0 = iLLTr;
 
 
   LSMxi = &SgOps->SMx[iLSMx];
 
   for (; iLSMx < SgOps->nSMx; iLSMx++, LSMxi++)
   {
-    LLTri = &SgOps->LTr[iLLTr];
+    LLTri = &SgOps->LTr[iLLTr0];
 
-    for (; iLLTr < (OldOnly ? SgOps->nLSL : SgOps->nLTr);
-           iLLTr++, LLTri++)
+    for (iLLTr = iLLTr0; iLLTr < (OldOnly ? SgOps->nLSL : SgOps->nLTr);
+         iLLTr++, LLTri++)
     {
       RotMx_t_Vector(NewLTr, LSMxi->s.R, LLTri->v, 0);
       if (AddSgLTr(SgOps, NewLTr) < 0)
