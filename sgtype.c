@@ -1,4 +1,4 @@
-/* $Id: sgtype.c 120 2000-09-02 05:25:41Z rwgk $ */
+/* $Id: sgtype.c 354 2001-03-13 02:38:26Z rwgk $ */
 
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
@@ -206,7 +206,7 @@ static int GetMG(const T_SgOps *StdSgOps, int PG_MGC)
 static int StartBasis(const T_SgOps *SgOps,
                       int nWanted, int *IxS, int *Ord, int (*EVs)[3])
 {
-  int     iLSMx, iWtd, jWtd, RMxO, nFound, UseThisSMx;
+  int     Restart, iLSMx, iWtd, jWtd, RMxO, nFound, UseThisSMx;
   T_RMxI  RI[1];
 
 
@@ -214,54 +214,60 @@ static int StartBasis(const T_SgOps *SgOps,
 
   nFound = 0;
 
-  for (iLSMx = 0; iLSMx < SgOps->nSMx; iLSMx++)
+  for (;;)
   {
-        RMxO = GetRtype(SgOps->SMx[iLSMx].s.R);
-    if (RMxO == 0) return IE(-1);
+    Restart = 0;
 
-    for (iWtd = 0; iWtd < nWanted; iWtd++)
+    for (iLSMx = 0; iLSMx < SgOps->nSMx; iLSMx++)
     {
-      if (IxS[iWtd] < 0 && (RMxO == Ord[iWtd] || -RMxO == Ord[iWtd]))
+          RMxO = GetRtype(SgOps->SMx[iLSMx].s.R);
+      if (RMxO == 0) return IE(-1);
+
+      for (iWtd = 0; iWtd < nWanted; iWtd++)
       {
-        if (SetRotMxInfo(SgOps->SMx[iLSMx].s.R, RI) == 0)
-          return IE(-1);
-
-        (void) MemCpy(EVs[iWtd], RI->EV, 3);
-
-        if (RI->SenseOfRotation >= 0)
+        if (IxS[iWtd] < 0 && (RMxO == Ord[iWtd] || -RMxO == Ord[iWtd]))
         {
-          UseThisSMx = 1;
+          if (SetRotMxInfo(SgOps->SMx[iLSMx].s.R, RI) == 0)
+            return IE(-1);
 
-          for (jWtd = 0; jWtd < nWanted; jWtd++)
+          (void) MemCpy(EVs[iWtd], RI->EV, 3);
+
+          if (RI->SenseOfRotation >= 0)
           {
-            if (   IxS[jWtd] >= 0
-                && MemCmp(EVs[iWtd], EVs[jWtd], 3) == 0)
-            {
-              if (abs(Ord[jWtd]) >= abs(RMxO))
-                UseThisSMx = 0;
-              else {
-                IxS[jWtd] = -1;
-                nFound--;
-              }
+            UseThisSMx = 1;
 
-              break;
+            for (jWtd = 0; jWtd < nWanted; jWtd++)
+            {
+              if (   IxS[jWtd] >= 0
+                  && MemCmp(EVs[iWtd], EVs[jWtd], 3) == 0)
+              {
+                if (abs(Ord[jWtd]) >= abs(RMxO))
+                  UseThisSMx = 0;
+                else {
+                  IxS[jWtd] = -1;
+                  nFound--;
+                  Restart = 1;
+                }
+
+                break;
+              }
+            }
+
+            if (UseThisSMx)
+            {
+              Ord[iWtd] = RMxO;
+              IxS[iWtd] = iLSMx;
+
+                  nFound++;
+              if (nFound == nWanted)
+                return 0;
             }
           }
-
-          if (UseThisSMx)
-          {
-            Ord[iWtd] = RMxO;
-            IxS[iWtd] = iLSMx;
-
-                nFound++;
-            if (nFound == nWanted)
-              return 0;
-          }
+          break;
         }
-
-        break;
       }
     }
+    if (Restart == 0) break;
   }
 
   return IE(-1);
