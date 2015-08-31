@@ -11,11 +11,13 @@ all: sglite.so
 .c.o: 
 	$(CC) $(CFLAGS) -c $*.c -DPythonTypes
 
-sglite.so: $(OBJ)
-	$(CC) -shared *.o -o sglite.so
+sglite.so: $(OBJ) 
+	$(CC) $(CCOPT1) -shared *.o -o sglite.so
 
 clean:
-	/bin/rm -f *.so *.o
+	touch .no_fail
+	/bin/rm -f *.so *.o .no_fail*
 
 distclean: clean
+
 
