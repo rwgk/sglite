@@ -1,8 +1,12 @@
-/* $Id: sglitemodule.c 123 2000-09-03 22:04:32Z wdelano $ */
+/* $Id: sglitemodule.c 3577 2009-02-05 03:29:28Z wdelano $ */
 
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
 /* Please see the LICENSE file for more information.    */
+
+#ifdef _PYMOL_WIN32
+#include"os_predef.h"
+#endif
 
 #include <ctype.h>
 
@@ -122,7 +126,6 @@ static PyObject *SgOps__init__(PyObject *self,
     if (ParseHallSymbol(HallSymbol, (T_SgOps *) self, PHSymOptPedantic) < 0)
       pReturnPySgError();
   }
-
   Py_INCREF(Py_None);
   return Py_None;
 }
@@ -226,7 +229,7 @@ static PyObject * SgOps__setstate__(PyObject *self, PyObject *args)
 
 static void DEL_SgOpsObject(T_SgOps *self)
 {
-  PyMem_DEL(self);
+  PyObject_Del(self);
 }
 
 
@@ -826,7 +829,7 @@ static PyObject *EqMIx__init__(PyObject *self, PyObject *args)
 
 static void DEL_EqMIxObject(T_EqMIx *self)
 {
-  PyMem_DEL(self);
+  PyObject_Del(self);
 }
 
 
@@ -1262,12 +1265,17 @@ static struct PyMethodDef module_methods[] = {
 
 static char *module_documentation = "sglite - space group library";
 
+/* C prototype to suppress GCC compiler warning...*/
+DL_EXPORT(void)
+     initsglite(void);
+
+
 DL_EXPORT(void)
 initsglite(void)
 {
   PyObject  *m, *d, *s;
 
-  char *Revision = "$Revision: 123 $";
+  char *Revision = "$Revision: 3577 $";
 
   m = Py_InitModule4("sglite", module_methods, module_documentation,
                      NULL, PYTHON_API_VERSION);

@@ -1,8 +1,12 @@
-/* $Id: sgfile.c 120 2000-09-02 05:25:41Z rwgk $ */
+/* $Id: sgfile.c 851 2002-02-09 05:39:17Z wdelano $ */
 
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
 /* Please see the LICENSE file for more information.    */
+
+#ifdef _PYMOL_WIN32
+#include"os_predef.h"
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
