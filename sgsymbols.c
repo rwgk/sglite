@@ -1,4 +1,4 @@
-/* $Id: sgsymbols.c 120 2000-09-02 05:25:41Z rwgk $ */
+/* $Id: sgsymbols.c 320 2001-02-19 20:35:48Z rwgk $ */
 
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
@@ -805,8 +805,8 @@ static int Schoenflies_as_SgNumber(const char *Symbol)
 {
   int SgNumber;
 
-  range2(SgNumber, 1, 230)
-    if (CmpSchoenfliesSymbols(Symbol, Schoenflies_List[SgNumber]) == 0)
+  range2(SgNumber, 1, 231)
+    if (CmpSchoenfliesSymbols(Schoenflies_List[SgNumber], Symbol) == 0)
       return SgNumber;
 
   return 0;
