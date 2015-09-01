@@ -1,5 +1,3 @@
-/* $Id: sglite.h 319 2001-02-19 20:35:24Z rwgk $ */
-
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
 /* Please see the LICENSE file for more information.    */

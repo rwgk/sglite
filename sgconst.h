@@ -1,5 +1,3 @@
-/* $Id: sgconst.h 492 2001-06-04 23:48:02Z rwgk $ */
-
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
 /* Please see the LICENSE file for more information.    */

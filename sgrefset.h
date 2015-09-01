@@ -1,5 +1,3 @@
-/* $Id: sgrefset.h 120 2000-09-02 05:25:41Z rwgk $ */
-
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
 /* Please see the LICENSE file for more information.    */

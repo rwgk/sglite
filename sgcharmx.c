@@ -1,5 +1,3 @@
-/* $Id: sgcharmx.c 851 2002-02-09 05:39:17Z wdelano $ */
-
 /* The source code contained in this file is            */
 /* Copyright (C) 1994-2000 by Ralf W. Grosse-Kunstleve. */
 /* Please see the LICENSE file for more information.    */
@@ -7,10 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#ifdef _PYMOL_WIN32
-#include"os_predef.h"
-#endif
 
 
 #undef SG_GLOBAL
