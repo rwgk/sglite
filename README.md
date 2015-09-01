@@ -12,5 +12,5 @@ sglitemodule.c was written for Python 1.5.2 and stopped working with
 Python 2.2. It's kept here only for reference.
 
 See also:
-https://github.com/rwgk/sginfo  # Known bugs but documented (incl. known bugs).
-http://cctbx.sf.net/  # Look for sgtbx.
+  - https://github.com/rwgk/sginfo  # Known bugs but documented (incl. bugs).
+  - http://cctbx.sf.net/  # Look for sgtbx.
